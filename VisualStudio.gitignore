@@ -1,0 +1,43 @@
+#  Ignorar archivos de Visual Studio
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Ignorar archivos de compilación en .NET
+bin/
+obj/
+*.dll
+*.pdb
+*.exe
+*.cache
+*.config
+*.log
+
+#  Ignorar archivos de Git
+.gitignore
+*.log
+
+#  Ignorar archivos de MongoDB
+data/
+mongod.lock
+*.bson
+*.json
+
+#  Ignorar archivos de NuGet
+*.nupkg
+**/packages/
+project.lock.json
+artifacts/
+
+#  Ignorar archivos de Test y Debug
+TestResults/
+*.coverage
+*.coveragexml
+*.trx
+
+#  Ignorar configuraciones de IDEs
+.idea/
+.vscode/
+*.code-workspace

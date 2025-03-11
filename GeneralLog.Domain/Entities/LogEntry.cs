@@ -9,7 +9,7 @@ namespace GeneralLog.Domain.Entities
 
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
-        public string Id { get; set; } = ObjectId.GenerateNewId().ToString();
+        public string Id { get; set; }
 
         public string CedulaCliente { get; set; } = string.Empty;
         public string TipoOperacion { get; set; } = string.Empty;

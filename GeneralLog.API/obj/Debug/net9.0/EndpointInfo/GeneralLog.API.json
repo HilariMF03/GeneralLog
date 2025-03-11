@@ -1,0 +1,92 @@
+{
+  "openapi": "3.0.4",
+  "info": {
+    "title": "GeneralLog API",
+    "version": "v1"
+  },
+  "paths": {
+    "/api/logs": {
+      "post": {
+        "tags": [
+          "Log"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LogEntry"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LogEntry"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/LogEntry"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/logs/{cedula}": {
+      "get": {
+        "tags": [
+          "Log"
+        ],
+        "parameters": [
+          {
+            "name": "cedula",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "LogEntry": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "nullable": true
+          },
+          "cedulaCliente": {
+            "type": "string",
+            "nullable": true
+          },
+          "tipoOperacion": {
+            "type": "string",
+            "nullable": true
+          },
+          "descripcion": {
+            "type": "string",
+            "nullable": true
+          },
+          "fechaRegistro": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  }
+}

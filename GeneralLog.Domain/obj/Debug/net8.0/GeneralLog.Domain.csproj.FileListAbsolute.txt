@@ -1,0 +1,13 @@
+C:\Users\hilar\source\repos\logs\GeneralLog.Domain\bin\Debug\net8.0\GeneralLog.Domain.deps.json
+C:\Users\hilar\source\repos\logs\GeneralLog.Domain\bin\Debug\net8.0\GeneralLog.Domain.dll
+C:\Users\hilar\source\repos\logs\GeneralLog.Domain\bin\Debug\net8.0\GeneralLog.Domain.pdb
+C:\Users\hilar\source\repos\logs\GeneralLog.Domain\obj\Debug\net8.0\GeneralLog.Domain.csproj.AssemblyReference.cache
+C:\Users\hilar\source\repos\logs\GeneralLog.Domain\obj\Debug\net8.0\GeneralLog.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\hilar\source\repos\logs\GeneralLog.Domain\obj\Debug\net8.0\GeneralLog.Domain.AssemblyInfoInputs.cache
+C:\Users\hilar\source\repos\logs\GeneralLog.Domain\obj\Debug\net8.0\GeneralLog.Domain.AssemblyInfo.cs
+C:\Users\hilar\source\repos\logs\GeneralLog.Domain\obj\Debug\net8.0\GeneralLog.Domain.csproj.CoreCompileInputs.cache
+C:\Users\hilar\source\repos\logs\GeneralLog.Domain\obj\Debug\net8.0\GeneralLog.Domain.sourcelink.json
+C:\Users\hilar\source\repos\logs\GeneralLog.Domain\obj\Debug\net8.0\GeneralLog.Domain.dll
+C:\Users\hilar\source\repos\logs\GeneralLog.Domain\obj\Debug\net8.0\refint\GeneralLog.Domain.dll
+C:\Users\hilar\source\repos\logs\GeneralLog.Domain\obj\Debug\net8.0\GeneralLog.Domain.pdb
+C:\Users\hilar\source\repos\logs\GeneralLog.Domain\obj\Debug\net8.0\ref\GeneralLog.Domain.dll

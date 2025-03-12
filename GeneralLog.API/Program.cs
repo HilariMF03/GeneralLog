@@ -11,6 +11,9 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.Configure<MongoDbSettings>(builder.Configuration.GetSection("MongoDbSettings"));
 builder.Services.AddSingleton<MongoDbContext>();
 
+// Registrar el servicio con su interfaz
+builder.Services.AddScoped<ILogService, LogService>();
+
 // Registrar el repositorio
 builder.Services.AddScoped<ILogRepository, LogRepository>();
 

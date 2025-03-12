@@ -1,5 +1,5 @@
-﻿using GeneralLog.Application.Services;
-using GeneralLog.Domain.Entities;
+﻿using GeneralLog.Domain.Entities;
+using GeneralLog.Domain.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GeneralLog.API.Controllers
@@ -8,9 +8,9 @@ namespace GeneralLog.API.Controllers
     [ApiController]
     public class LogController : ControllerBase
     {
-        private readonly LogService _logService;
+        private readonly ILogService _logService;
 
-        public LogController(LogService logService)
+        public LogController(ILogService logService)
         {
             _logService = logService;
         }
@@ -18,15 +18,38 @@ namespace GeneralLog.API.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateLog([FromBody] LogEntry log)
         {
-            await _logService.AddLogAsync(log);
-            return Created("", new { message = "Log registrado exitosamente" });
+            try
+            {
+                await _logService.AddLogAsyc(log);
+                return Created("", new { message = "Log registrado exitosamente" });
+            }
+            catch (ArgumentException ex)
+            {
+                return BadRequest(new { error = ex.Message });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { error = "Error interno del servidor.", details = ex.Message });
+
+            }
         }
 
         [HttpGet("{cedula}")]
         public async Task<IActionResult> GetLogsByCedula(string cedula)
         {
-            var logs = await _logService.GetLogsByCedulaAsync(cedula);
-            return Ok(logs);
+            try
+            {
+                var logs = await _logService.GetLogsByCedulaAsyc(cedula);
+                return Ok(logs);
+            }
+            catch (ArgumentException ex)
+            {
+                return BadRequest(new { error = ex.Message });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { error = "Error interno del servidor.", details = ex.Message });
+            }
         }
     }
 }

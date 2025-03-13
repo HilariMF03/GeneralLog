@@ -1,5 +1,5 @@
-﻿using GeneralLog.Domain.Entities;
-using GeneralLog.Domain.Interfaces;
+﻿using GeneralLog.Application.Interfaces;
+using GeneralLog.Domain.Entities;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GeneralLog.API.Controllers

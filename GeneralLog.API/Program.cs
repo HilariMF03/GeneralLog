@@ -1,9 +1,10 @@
+using GeneralLog.Application.Interfaces;
 using GeneralLog.Application.Services;
-using GeneralLog.Domain.Interfaces;
 using GeneralLog.Infrastructure.Configurations;
 using GeneralLog.Infrastructure.Database;
 using GeneralLog.Infrastructure.Repositories;
 using Microsoft.OpenApi.Models;
+
 
 var builder = WebApplication.CreateBuilder(args);
 

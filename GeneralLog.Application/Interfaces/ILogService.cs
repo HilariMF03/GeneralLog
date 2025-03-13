@@ -1,6 +1,6 @@
 ﻿using GeneralLog.Domain.Entities;
 
-namespace GeneralLog.Domain.Interfaces
+namespace GeneralLog.Application.Interfaces
 {
     public interface ILogService
     {

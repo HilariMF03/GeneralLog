@@ -5,6 +5,6 @@ namespace GeneralLog.Application.Interfaces
     public interface ILogRepository
     {
         Task AddLogAsync(LogEntry log);
-        Task<List<LogEntry>> GetLogsByCedulaAsync(string cedula);
+        Task<List<LogEntry>> GetLogsByIdentificacionClienteAsync(string identificacion);
     }
 }

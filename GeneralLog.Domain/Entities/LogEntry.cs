@@ -11,7 +11,7 @@ namespace GeneralLog.Domain.Entities
         [BsonRepresentation(BsonType.ObjectId)]
         public string Id { get; set; }
 
-        public string CedulaCliente { get; set; } = string.Empty;
+        public string IdentificacionCliente { get; set; } = string.Empty;
         public string TipoOperacion { get; set; } = string.Empty;
         public string Descripcion { get; set; } = string.Empty;
         public DateTime FechaRegistro { get; set; } = DateTime.UtcNow;

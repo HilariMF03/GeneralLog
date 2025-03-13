@@ -34,12 +34,12 @@ namespace GeneralLog.API.Controllers
             }
         }
 
-        [HttpGet("{cedula}")]
-        public async Task<IActionResult> GetLogsByCedula(string cedula)
+        [HttpGet("{identificacionCliente}")]
+        public async Task<IActionResult> GetLogsByIdentificacionCliente(string identificacionCliente)
         {
             try
             {
-                var logs = await _logService.GetLogsByCedulaAsyc(cedula);
+                var logs = await _logService.GetLogsByIdentificacionClienteAsync(identificacionCliente);
                 return Ok(logs);
             }
             catch (ArgumentException ex)

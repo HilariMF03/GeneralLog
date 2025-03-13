@@ -15,8 +15,8 @@ namespace GeneralLog.Application.Services
 
         public async Task AddLogAsyc(LogEntry log)
         {
-            if (!IsValidCedula(log.CedulaCliente))
-                throw new ArgumentException("La cédula ingresada no es válida.");
+            if (!IsValidIdentificacionCliente(log.IdentificacionCliente))
+                throw new ArgumentException("La identificación del cliente ingresada no es válida.");
 
             if (string.IsNullOrWhiteSpace(log.TipoOperacion))
                 throw new ArgumentException("El tipo de operación es requerido.");
@@ -27,17 +27,19 @@ namespace GeneralLog.Application.Services
             await _logRepository.AddLogAsync(log);
         }
 
-        public async Task<List<LogEntry>> GetLogsByCedulaAsyc(string cedula)
+        public async Task<List<LogEntry>> GetLogsByIdentificacionClienteAsync(string identificacionCliente)
         {
-            if (!IsValidCedula(cedula))
-                throw new ArgumentException("La cédula ingresada no es válida.");
+            if (!IsValidIdentificacionCliente(identificacionCliente))
+                throw new ArgumentException("La identificación del cliente ingresada no es válida.");
 
-            return await _logRepository.GetLogsByCedulaAsync(cedula);
+            return await _logRepository.GetLogsByIdentificacionClienteAsync(identificacionCliente);
         }
 
-        private bool IsValidCedula(string cedula)
+        private bool IsValidIdentificacionCliente(string identificacionCliente)
         {
-            return Regex.IsMatch(cedula, @"^\d{3}-\d{7}-\d{1}$"); //probando el formato de cedula DOM
+            return Regex.IsMatch(identificacionCliente, @"^\d{3}-\d{7}-\d{1}$") || // Cedula
+                   Regex.IsMatch(identificacionCliente, @"^\d{9}$") || // RNC
+                   Regex.IsMatch(identificacionCliente, @"^[A-Z0-9]{6,9}$"); // Pasaporte
         }
     }
 }

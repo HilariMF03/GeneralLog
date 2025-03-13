@@ -19,9 +19,9 @@ namespace GeneralLog.Infrastructure.Repositories
             await _context.Logs.InsertOneAsync(log);
         }
 
-        public async Task<List<LogEntry>> GetLogsByCedulaAsync(string cedula)
+        public async Task<List<LogEntry>> GetLogsByIdentificacionClienteAsync(string Identificacion)
         {
-            return await _context.Logs.Find(log => log.CedulaCliente == cedula).ToListAsync();
+            return await _context.Logs.Find(log => log.IdentificacionCliente == Identificacion).ToListAsync();
         }
     }
 }

@@ -18,6 +18,9 @@ namespace GeneralLog.Application.Services
             if (!IsValidClientIdentification(log.ClientIdentification))
                 throw new ArgumentException("La identificación del cliente ingresada no es válida.");
 
+            if (!IsValidDocumentType(log.DocumentType))
+                throw new ArgumentException("El tipo de documento ingresado no es válido. Debe ser 'Cedula', 'RNC' o 'Pasaporte'.");
+
             if (string.IsNullOrWhiteSpace(log.OperationType))
                 throw new ArgumentException("El tipo de operación es requerido.");
 
@@ -40,6 +43,11 @@ namespace GeneralLog.Application.Services
             return Regex.IsMatch(clientIdentification, @"^\d{3}-\d{7}-\d{1}$") || // Cedula
                    Regex.IsMatch(clientIdentification, @"^\d{9}$") || // RNC
                    Regex.IsMatch(clientIdentification, @"^[A-Z0-9]{6,9}$"); // Pasaporte
+        }
+
+        private bool IsValidDocumentType(string documentType)
+        {
+            return documentType == "Cedula" || documentType == "RNC" || documentType == "Pasaporte";
         }
     }
 }

@@ -14,9 +14,9 @@ namespace GeneralLog.Infrastructure.Repositories
             _context = context;
         }
 
-        public async Task AddLogAsync(LogsEntry log)
+        public async Task AddLogAsync(LogsEntry log, CancellationToken cancellationToken = default)
         {
-            await _context.Logs.InsertOneAsync(log);
+            await _context.Logs.InsertOneAsync(log, cancellationToken: cancellationToken);
         }
 
         public async Task<List<LogsEntry>> GetLogsByClientIdentificationAsync(string clientIdentification)

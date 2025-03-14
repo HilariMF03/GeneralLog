@@ -16,11 +16,11 @@ namespace GeneralLog.API.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateLog([FromBody] LogsEntry log)
+        public async Task<IActionResult> CreateLog([FromBody] LogsEntry log, CancellationToken cancellationToken = default)
         {
             try
             {
-                await _logsService.AddLogAsync(log);
+                await _logsService.AddLogAsync(log, cancellationToken);
                 return Created("", new { message = "Log registrado exitosamente" });
             }
             catch (ArgumentException ex)

@@ -13,7 +13,7 @@ namespace GeneralLog.Application.Services
             _logRepository = logRepository;
         }
 
-        public async Task AddLogAsync(LogsEntry log)
+        public async Task AddLogAsync(LogsEntry log, CancellationToken cancellationToken = default)
         {
             if (!IsValidClientIdentification(log.ClientIdentification))
                 throw new ArgumentException("La identificación del cliente ingresada no es válida.");
@@ -27,7 +27,7 @@ namespace GeneralLog.Application.Services
             if (string.IsNullOrWhiteSpace(log.Description))
                 throw new ArgumentException("La descripción es requerida.");
 
-            await _logRepository.AddLogAsync(log);
+            await _logRepository.AddLogAsync(log, cancellationToken);
         }
 
         public async Task<List<LogsEntry>> GetLogsByClientIdentificationAsync(string clientIdentification)

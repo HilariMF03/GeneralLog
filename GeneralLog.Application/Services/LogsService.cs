@@ -15,31 +15,31 @@ namespace GeneralLog.Application.Services
 
         public async Task AddLogAsync(LogsEntry log)
         {
-            if (!IsValidIdentificacionCliente(log.IdentificacionCliente))
+            if (!IsValidClientIdentification(log.ClientIdentification))
                 throw new ArgumentException("La identificación del cliente ingresada no es válida.");
 
-            if (string.IsNullOrWhiteSpace(log.TipoOperacion))
+            if (string.IsNullOrWhiteSpace(log.OperationType))
                 throw new ArgumentException("El tipo de operación es requerido.");
 
-            if (string.IsNullOrWhiteSpace(log.Descripcion))
+            if (string.IsNullOrWhiteSpace(log.Description))
                 throw new ArgumentException("La descripción es requerida.");
 
             await _logRepository.AddLogAsync(log);
         }
 
-        public async Task<List<LogsEntry>> GetLogsByIdentificacionClienteAsync(string identificacionCliente)
+        public async Task<List<LogsEntry>> GetLogsByClientIdentificationAsync(string clientIdentification)
         {
-            if (!IsValidIdentificacionCliente(identificacionCliente))
+            if (!IsValidClientIdentification(clientIdentification))
                 throw new ArgumentException("La identificación del cliente ingresada no es válida.");
 
-            return await _logRepository.GetLogsByIdentificacionClienteAsync(identificacionCliente);
+            return await _logRepository.GetLogsByClientIdentificationAsync(clientIdentification);
         }
 
-        private bool IsValidIdentificacionCliente(string identificacionCliente)
+        private bool IsValidClientIdentification(string clientIdentification)
         {
-            return Regex.IsMatch(identificacionCliente, @"^\d{3}-\d{7}-\d{1}$") || // Cedula
-                   Regex.IsMatch(identificacionCliente, @"^\d{9}$") || // RNC
-                   Regex.IsMatch(identificacionCliente, @"^[A-Z0-9]{6,9}$"); // Pasaporte
+            return Regex.IsMatch(clientIdentification, @"^\d{3}-\d{7}-\d{1}$") || // Cedula
+                   Regex.IsMatch(clientIdentification, @"^\d{9}$") || // RNC
+                   Regex.IsMatch(clientIdentification, @"^[A-Z0-9]{6,9}$"); // Pasaporte
         }
     }
 }

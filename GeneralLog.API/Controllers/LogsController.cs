@@ -8,11 +8,11 @@ namespace GeneralLog.API.Controllers
     [ApiController]
     public class LogsController : ControllerBase
     {
-        private readonly ILogsService _logService;
+        private readonly ILogsService _logsService;
 
-        public LogsController(ILogsService logService)
+        public LogsController(ILogsService logsService)
         {
-            _logService = logService;
+            _logsService = logsService;
         }
 
         [HttpPost]
@@ -20,7 +20,7 @@ namespace GeneralLog.API.Controllers
         {
             try
             {
-                await _logService.AddLogAsync(log);
+                await _logsService.AddLogAsync(log);
                 return Created("", new { message = "Log registrado exitosamente" });
             }
             catch (ArgumentException ex)
@@ -33,12 +33,12 @@ namespace GeneralLog.API.Controllers
             }
         }
 
-        [HttpGet("{identificacionCliente}")]
-        public async Task<IActionResult> GetLogsByIdentificacionCliente(string identificacionCliente)
+        [HttpGet("{clientIdentification}")]
+        public async Task<IActionResult> GetLogsByClientIdentification(string clientIdentification)
         {
             try
             {
-                var logs = await _logService.GetLogsByIdentificacionClienteAsync(identificacionCliente);
+                var logs = await _logsService.GetLogsByClientIdentificationAsync(clientIdentification);
                 return Ok(logs);
             }
             catch (ArgumentException ex)

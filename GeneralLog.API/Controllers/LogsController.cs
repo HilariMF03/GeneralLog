@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace GeneralLog.API.Controllers
 {
-    [Route("api/logs")]
+    [Route("api/[controller]")]
     [ApiController]
     public class LogsController : ControllerBase
     {

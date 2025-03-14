@@ -13,13 +13,13 @@ builder.Services.Configure<MongoDbSettings>(builder.Configuration.GetSection("Mo
 builder.Services.AddSingleton<MongoDbContext>();
 
 // Registrar el servicio con su interfaz
-builder.Services.AddScoped<ILogService, LogService>();
+builder.Services.AddScoped<ILogsService, LogsService>();
 
 // Registrar el repositorio
-builder.Services.AddScoped<ILogRepository, LogRepository>();
+builder.Services.AddScoped<ILogsRepository, LogsRepository>();
 
 // Registrar LogService
-builder.Services.AddScoped<LogService>();
+builder.Services.AddScoped<LogsService>();
 
 // Habilitar controladores
 builder.Services.AddControllers();

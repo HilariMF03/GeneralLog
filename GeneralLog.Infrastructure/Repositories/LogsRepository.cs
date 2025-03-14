@@ -5,21 +5,21 @@ using MongoDB.Driver;
 
 namespace GeneralLog.Infrastructure.Repositories
 {
-    public class LogRepository : ILogRepository
+    public class LogsRepository : ILogsRepository
     {
         private readonly MongoDbContext _context;
 
-        public LogRepository(MongoDbContext context)
+        public LogsRepository(MongoDbContext context)
         {
             _context = context;
         }
 
-        public async Task AddLogAsync(LogEntry log)
+        public async Task AddLogAsync(LogsEntry log)
         {
             await _context.Logs.InsertOneAsync(log);
         }
 
-        public async Task<List<LogEntry>> GetLogsByIdentificacionClienteAsync(string Identificacion)
+        public async Task<List<LogsEntry>> GetLogsByIdentificacionClienteAsync(string Identificacion)
         {
             return await _context.Logs.Find(log => log.IdentificacionCliente == Identificacion).ToListAsync();
         }

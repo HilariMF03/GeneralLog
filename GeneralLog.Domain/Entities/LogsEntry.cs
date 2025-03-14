@@ -4,7 +4,7 @@ using MongoDB.Bson.Serialization.Attributes;
 
 namespace GeneralLog.Domain.Entities
 {
-    public class LogEntry
+    public class LogsEntry
     {
 
         [BsonId]

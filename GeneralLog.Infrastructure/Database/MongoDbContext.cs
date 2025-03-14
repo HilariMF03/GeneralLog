@@ -15,6 +15,6 @@ namespace GeneralLog.Infrastructure.Database
             _database = client.GetDatabase(settings.Value.DatabaseName);
         }
 
-        public IMongoCollection<LogEntry> Logs => _database.GetCollection<LogEntry>("Logs");
+        public IMongoCollection<LogsEntry> Logs => _database.GetCollection<LogsEntry>("Logs");
     }
 }

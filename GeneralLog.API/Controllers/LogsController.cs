@@ -6,21 +6,21 @@ namespace GeneralLog.API.Controllers
 {
     [Route("api/logs")]
     [ApiController]
-    public class LogController : ControllerBase
+    public class LogsController : ControllerBase
     {
-        private readonly ILogService _logService;
+        private readonly ILogsService _logService;
 
-        public LogController(ILogService logService)
+        public LogsController(ILogsService logService)
         {
             _logService = logService;
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateLog([FromBody] LogEntry log)
+        public async Task<IActionResult> CreateLog([FromBody] LogsEntry log)
         {
             try
             {
-                await _logService.AddLogAsyc(log);
+                await _logService.AddLogAsync(log);
                 return Created("", new { message = "Log registrado exitosamente" });
             }
             catch (ArgumentException ex)
@@ -30,7 +30,6 @@ namespace GeneralLog.API.Controllers
             catch (Exception ex)
             {
                 return StatusCode(500, new { error = "Error interno del servidor.", details = ex.Message });
-
             }
         }
 

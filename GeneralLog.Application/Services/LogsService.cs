@@ -4,16 +4,16 @@ using System.Text.RegularExpressions;
 
 namespace GeneralLog.Application.Services
 {
-    public class LogService : ILogService
+    public class LogsService : ILogsService
     {
-        private readonly ILogRepository _logRepository;
+        private readonly ILogsRepository _logRepository;
 
-        public LogService(ILogRepository logRepository)
+        public LogsService(ILogsRepository logRepository)
         {
             _logRepository = logRepository;
         }
 
-        public async Task AddLogAsyc(LogEntry log)
+        public async Task AddLogAsync(LogsEntry log)
         {
             if (!IsValidIdentificacionCliente(log.IdentificacionCliente))
                 throw new ArgumentException("La identificación del cliente ingresada no es válida.");
@@ -27,7 +27,7 @@ namespace GeneralLog.Application.Services
             await _logRepository.AddLogAsync(log);
         }
 
-        public async Task<List<LogEntry>> GetLogsByIdentificacionClienteAsync(string identificacionCliente)
+        public async Task<List<LogsEntry>> GetLogsByIdentificacionClienteAsync(string identificacionCliente)
         {
             if (!IsValidIdentificacionCliente(identificacionCliente))
                 throw new ArgumentException("La identificación del cliente ingresada no es válida.");

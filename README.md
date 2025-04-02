@@ -18,3 +18,11 @@ El proyecto está construido bajo los principios de la **Onion Architecture**, l
 - `GeneralLog.Application`: Contiene la lógica de negocio y servicios.
 - `GeneralLog.Infrastructure`: Implementación del acceso a datos y configuración de MongoDB.
 - `GeneralLog.WebApi`: Punto de entrada HTTP para consumir el servicio.
+
+## Endpoints principales
+
+| Método | Ruta                                | Descripción                                   |
+|--------|-------------------------------------|-----------------------------------------------|
+| POST   | `/api/GeneralLog`                   | Registrar un nuevo log                        |
+| GET    | `/api/GeneralLog/GetByCedula/{id}`  | Consultar los logs filtrados por cédula       |
+
